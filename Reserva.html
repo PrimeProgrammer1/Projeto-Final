@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Reserva</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="multiweb.css" />
+    <script src="multi.js"></script>
+</head>
+
+<body>
+
+    <div class="Cabeçalho">
+            <hr>
+            <h1 style="text-align:left">
+              Restaurante Mouse Malboro
+        
+              
+              <a href="/header.html" style="text-align:left">
+                <button>Voltar ao Menu</button>
+            </a>
+            <a href="/Form.html" style="text-align:left">
+                <button>Cadastro</button>
+            </a>
+            <a href="/Sugest.html" style="text-align:left">
+                <button>Sugestões</button>
+            </a>
+              <style>
+                .dropbtn {
+                  background-color: #04AA6D;
+                  color: white;
+                  padding: 16px;
+                  font-size: 16px;
+                  border: none;
+                  cursor: pointer;
+                }
+        
+                .dropbtn:hover,
+                .dropbtn:focus {
+                  background-color: #3e8e41;
+                }
+        
+                #myInput {
+                  box-sizing: border-box;
+                  background-image: url('searchicon.png');
+                  background-position: 14px 12px;
+                  background-repeat: no-repeat;
+                  font-size: 12px;
+                  padding: 14px 20px 12px 35px;
+                  border: none;
+                  border-bottom: 1px solid #ddd;
+                }
+        
+                #myInput:focus {
+                  outline: 3px solid #ddd;
+                }
+        
+                .dropdown {
+                  position: relative;
+                  display: inline-block;
+                }
+        
+                .dropdown-content {
+                  display: none;
+                  position: absolute;
+                  background-color: #f6f6f6;
+                  min-width: 230px;
+                  overflow: auto;
+                  border: 1px solid #ddd;
+                  z-index: 1;
+                }
+        
+                .dropdown-content a {
+                  color: black;
+                  padding: 12px 20px;
+                  text-decoration: none;
+                  display: block;
+                }
+        
+                .dropdown a:hover {
+                  background-color: #ddd;
+                }
+        
+                .show {
+                  display: block;
+                }
+              </style>
+
+    <hr>
+
+    <h2>Reserva</h2>
+
+    <hr>
+
+    <table id="calendar">
+      <thead>
+        <tr>
+          <th colspan="7" id="month-year"></th>
+        </tr>
+        <tr>
+          <th>Domingo</th>
+          <th>Segunda</th>
+          <th>Terça</th>
+          <th>Quarta</th>
+          <th>Quinta</th>
+          <th>Sexta</th>
+          <th>Sábado</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  
+    <script>
+
+      function createCalendar(year, month) {
+        var tableBody = document.querySelector("#calendar tbody");
+        var monthYearHeader = document.querySelector("#month-year");
+        tableBody.innerHTML = "";
+        
+        var firstDay = new Date(year, month, 1);
+        
+        var lastDay = new Date(year, month + 1, 0).getDate();
+        
+        var startDayIndex = firstDay.getDay();
+        
+        monthYearHeader.innerHTML = new Intl.DateTimeFormat('pt-BR', { year: 'numeric', month: 'long' }).format(firstDay);
+        
+        var weekRow = document.createElement("tr");
+        tableBody.appendChild(weekRow);
+  
+        for (var i = 0; i < startDayIndex; i++) {
+          var cell = document.createElement("td");
+          weekRow.appendChild(cell);
+        }
+        
+        var currentDay = 1;
+        for (var i = startDayIndex; i < 7; i++) {
+          var cell = document.createElement("td");
+          cell.innerHTML = currentDay;
+          cell.addEventListener("click", function() {
+
+            selectDay(this);
+          });
+          weekRow.appendChild(cell);
+          currentDay++;
+        }
+        
+        while (currentDay <= lastDay) {
+          var weekRow = document.createElement("tr");
+          tableBody.appendChild(weekRow);
+          
+          for (var i = 0; i < 7; i++) {
+            if (currentDay > lastDay) {
+              break;
+            }
+            
+            var cell = document.createElement("td");
+            cell.innerHTML = currentDay;
+            cell.addEventListener("click", function() {
+
+              selectDay(this);
+            });
+            weekRow.appendChild(cell);
+            currentDay++;
+          }
+        }
+      }
+      
+      function selectDay(cell) {
+
+        var selectedDay = document.querySelector(".selected");
+        if (selectedDay) {
+          selectedDay.classList.remove("selected");
+        }
+        
+        cell.classList.add("selected");
+        
+        console.log(cell.innerHTML);
+      }
+      
+      var currentDate = new Date();
+      var currentYear = currentDate.getFullYear();
+      var currentMonth = currentDate.getMonth();
+      
+      createCalendar(currentYear, currentMonth);
+      
+    </script>
+
+</body>
+
+</html>
