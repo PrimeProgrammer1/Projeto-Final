@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sugestões</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="multiweb.css" />
+    <script src='multi.js'></script>
+</head>
+
+<body>
+
+    <div class="Cabeçalho">
+        <hr>
+        <h1 style="text-align:left">
+            Restaurante Mouse Malboro
+
+
+            <a href="/header.html" style="text-align:left">
+                <button>Voltar ao Menu</button>
+            </a>
+            <a href="/Form.html" style="text-align:left">
+                <button>Cadastro</button>
+            </a>
+            <a href="/Reserva.html" style="text-align:left">
+                <button>Reserva</button>
+            </a>
+
+            <style>
+                .dropbtn {
+                    background-color: #04AA6D;
+                    color: white;
+                    padding: 16px;
+                    font-size: 16px;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .dropbtn:hover,
+                .dropbtn:focus {
+                    background-color: #3e8e41;
+                }
+
+                #myInput {
+                    box-sizing: border-box;
+                    background-image: url('searchicon.png');
+                    background-position: 14px 12px;
+                    background-repeat: no-repeat;
+                    font-size: 12px;
+                    padding: 14px 20px 12px 35px;
+                    border: none;
+                    border-bottom: 1px solid #ddd;
+                }
+
+                #myInput:focus {
+                    outline: 3px solid #ddd;
+                }
+
+                .dropdown {
+                    position: relative;
+                    display: inline-block;
+                }
+
+                .dropdown-content {
+                    display: none;
+                    position: absolute;
+                    background-color: #f6f6f6;
+                    min-width: 230px;
+                    overflow: auto;
+                    border: 1px solid #ddd;
+                    z-index: 1;
+                }
+
+                .dropdown-content a {
+                    color: black;
+                    padding: 12px 20px;
+                    text-decoration: none;
+                    display: block;
+                }
+
+                .dropdown a:hover {
+                    background-color: #ddd;
+                }
+
+                .show {
+                    display: block;
+                }
+            </style>
+
+            <p></p>
+
+            <h2>Sugestões</h2>
+            
+            <p></p>
+            <p></p>
+
+            <hr>
+            <ul id="lista"></ul>
+            <br>
+            <label for="sugestao">Dê nos Sugestões de Novos Pratos para serem inseridos no Menu!
+            </label>
+            <br>
+
+            <input type="text" id="sugestao" name="sugestao" placeholder="Sugestões">
+            <button onclick="sugestoes()">Adicionar Sugestão</button>
+
+            <hr>
+
+</body>
+
+</html>
